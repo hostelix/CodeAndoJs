@@ -11,9 +11,17 @@
     "url": "https://github.com/hostelix/CodeAndoJs.git"
   },
   "author": "Israel Lugo",
-  "license": "MIT",
+  "license": "GPL",
   "bugs": {
     "url": "https://github.com/hostelix/CodeAndoJs/issues"
   },
-  "homepage": "https://github.com/hostelix/CodeAndoJs"
+  "homepage": "https://github.com/hostelix/CodeAndoJs",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "jade": "^1.11.0",
+    "mongoose": "^4.0.6",
+    "multer": "^0.1.8"
+  },
+  "devDependencies": {}
 }
