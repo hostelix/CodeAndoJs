@@ -2,7 +2,7 @@
   "name": "CodeAndoJs",
   "version": "1.0.0",
   "description": "Aula virtual para la edicion de codigo a tiempo real",
-  "main": "index.js",
+  "main": "run_app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
