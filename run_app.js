@@ -20,7 +20,7 @@ db.on('error', function(err){
 });
 
 db.once('open', function() {
-  console.info('Connected to database');
+  console.info('Connected to database success');
 });
 
 mongoose.connect(config_db.uri_db);
@@ -39,7 +39,11 @@ app.use(express.static(config_path.dir_public));
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use(expressSession({secret: "mycodsecrect"}));
+app.use(expressSession({
+	secret: "mycodsecrect",
+	resave: true,
+ 	saveUninitialized: true,
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
