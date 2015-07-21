@@ -43,6 +43,11 @@ var PersonSchema = new Schema({
     sexo: {
     	type: String,
     	enum:["M","F"],
+    },
+
+    created: {
+    	type: Date, 
+    	default: Date.now
     }
 });
 

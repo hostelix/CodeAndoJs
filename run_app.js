@@ -8,6 +8,7 @@ var express = require('express'),
 	app = express(),
 	swig = require('swig'),
 	passport =  require('passport'),
+	Persona = require('./app/models/person'),
 	expressSession = require('express-session');
 
 PORT  = process.env.PORT || 3000;
@@ -34,7 +35,7 @@ swig.setDefaults({ cache: false });
 app.set('views', __dirname+config_path.dir_views);
 
 
-app.use(express.static(config_path.dir_public));
+app.use(express.static(__dirname));
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -48,14 +49,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.get('/',function(req,res){
+app.get('/',function(req,res,next){
 	res.render('index/index');
-})
 
-
+	/*Persona.find().lean().exec(function(err, items) {
+    	console.log(JSON.stringify(items));
+	});
+	next();*/
+	
+});
 
 app.listen(PORT,function(){
-	console.log("Server Runnig In Port: "+ PORT);
+	console.log("Server runnig in port: "+ PORT);
 });
 
 

@@ -26,5 +26,8 @@
     "passport-local": "^1.0.0",
     "swig": "^1.4.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "semantic-ui": "^2.0.5"
+  }
 }
