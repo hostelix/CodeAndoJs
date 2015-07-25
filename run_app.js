@@ -1,6 +1,7 @@
 var express = require('express'),
 	multer  = require('multer'),
 	mongoose = require('mongoose'),
+	morgan = require('morgan'),
 	bodyParser = require('body-parser'),
 	path = require('path'),
 	config_path = require('./app/config/config_path'),
@@ -17,11 +18,11 @@ PORT  = process.env.PORT || 3000;
 var db = mongoose.connection;
 	
 db.on('error', function(err){
-	console.log('Failure to connect-> '+err);
+	console.error('Failure to connect-> '+err);
 });
 
 db.once('open', function() {
-  console.info('Connected to database success');
+  	console.info('Connected to database success');
 });
 
 mongoose.connect(config_db.uri_db);
@@ -32,10 +33,12 @@ app.set('view engine', 'html');
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
+//set path to views
 app.set('views', __dirname+config_path.dir_views);
 
 
-app.use(express.static(__dirname));
+//Set path to public files
+app.use(express.static(config_path.dir_public));
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -48,6 +51,8 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(morgan('dev'));
+
 
 app.get('/',function(req,res,next){
 	res.render('index/index');
@@ -58,6 +63,29 @@ app.get('/',function(req,res,next){
 	next();*/
 	
 });
+/*
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error/errors', {
+        message: {
+        	'message':err.message,
+        	'status': err.status,
+        },
+        error: {}
+    });
+});
+
+*/
 
 app.listen(PORT,function(){
 	console.log("Server runnig in port: "+ PORT);
