@@ -4,11 +4,11 @@ var express = require('express'),
 	morgan = require('morgan'),
 	bodyParser = require('body-parser'),
 	path = require('path'),
-	config_path = require('./app/config/config_path'),
-	config_db = require('./app/config/config_db'),
+	config = require('./app/config/config'),
 	app = express(),
 	swig = require('swig'),
 	passport =  require('passport'),
+	urls = require('./app/routes'),
 	Persona = require('./app/models/person'),
 	expressSession = require('express-session');
 
@@ -25,20 +25,20 @@ db.once('open', function() {
   	console.info('Connected to database success');
 });
 
-mongoose.connect(config_db.uri_db);
+mongoose.connect(config.DB.URI());
 
-
+//set params to swing 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
 //set path to views
-app.set('views', __dirname+config_path.dir_views);
+app.set('views', __dirname+config.DIR.VIEWS);
 
 
-//Set path to public files
-app.use(express.static(config_path.dir_public));
+//set path to public files
+app.use(express.static(config.DIR.PUBLIC));
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -51,18 +51,17 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//set morgan to log request
 app.use(morgan('dev'));
 
-
-app.get('/',function(req,res,next){
+app.get('/', function(req, res){
 	res.render('index/index');
-
-	/*Persona.find().lean().exec(function(err, items) {
-    	console.log(JSON.stringify(items));
-	});
-	next();*/
-	
 });
+
+
+app.use('/auth',urls.auth);
+
+
 /*
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -86,6 +85,8 @@ app.use(function(err, req, res, next) {
 });
 
 */
+
+
 
 app.listen(PORT,function(){
 	console.log("Server runnig in port: "+ PORT);
