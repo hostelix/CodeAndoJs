@@ -1,8 +1,12 @@
 <!doctype html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
-    <title>{% block titulo %}My Site{% endblock %}</title>
+    <link rel="icon" href="/img/favicon.png">
+
+    <title>
+      {% block titulo %}{% endblock %}
+    </title>
 
     {% block css_cabecera %}{% endblock %}
     {%block js_cabecera %}{%endblock%}
@@ -13,14 +17,16 @@
 
     <link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="icon" href="/img/favicon.png">
-</head>
+    <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+  </head>
 
-<body>
-  {% block contenido %}{% endblock %}
-  
-  <script src="/js/jquery-1.11.3.min.js"></script>
-  <script src="/semantic/dist/semantic.min.js"></script>
-  {%block js_body %}{%endblock%}
-</body>
+  <body>
+    {% block contenido %}{% endblock %}
+    
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/semantic/dist/semantic.min.js"></script>
+    <script src="/js/scripts.js"></script>
+
+    {%block js_body %}{%endblock%}
+  </body>
 </html>
