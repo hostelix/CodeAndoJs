@@ -19,6 +19,7 @@ var db = mongoose.connection;
 	
 db.on('error', function(err){
 	console.error('Failure to connect-> '+err);
+	process.exit(1);
 });
 
 db.once('open', function() {

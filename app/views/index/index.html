@@ -1,15 +1,28 @@
 {% extends '../templates/base.html' %}
 
-{% block title %}My Page{% endblock %}
+{% block titulo %} CodeAndoJs {% endblock%}
 
-{% block head %}
+{% block contenido %}
+  <div class="ui fixed menu" id="menu-index">
+    <div class="header item">
+      <a class="" href="/">CodeAndo <i class="edit icon"></i></a>
+    </div>
+      
+    <div class="right menu">
+        <a class="item" href="#" data-toggle="modal" data-target="#modalInicioSesion" id="modal-inicio-sesion">Iniciar Sesion &nbsp;<i class="external shared icon"></i></a>
+        <a class="item" href="#" data-toggle="modal" data-target="#modalRegistro" id="modal-registro">Registrarse &nbsp;<i class="add user icon"></i></a>
+      </div>
+    </div>
+  </div><!-- /.ui menu -->
+    
+  
+  <div class="centrado titulo-index">
+    <h1 class="ui center aligned header">
+        Bienvenido</br> 
+        CodeAndo Master
+    </h1>
+    <img class="logo-index" src="/img/logo-codeando.png" alt="logo" id="logo-bienvenida">
+  </div>
 
-{% endblock %}
-
-{% block content %}
-        <div class="ui left icon input loading">
-  			<input type="text" placeholder="Search...">
-  			<i class="search icon"></i>
-		</div>
 
 {% endblock %}

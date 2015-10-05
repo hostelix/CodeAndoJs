@@ -1,2 +1,27 @@
-h1{
+/*
+  Identificadores
+*/
+#menu-index{
+  padding: 5px;
 }
+
+
+/*
+  Clases
+*/
+.centrado{
+    width: 300px;
+    margin: 0 auto;
+}
+
+.titulo-index{
+  padding-top:150px;
+  text-align: center;
+}
+
+.logo-index{
+  width: 300px;
+  height: 300px;
+}
+
+
