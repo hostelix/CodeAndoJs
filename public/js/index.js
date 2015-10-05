@@ -1,3 +1,4 @@
+
 var abrir_modal = function(campo){
-  console.log(campo);
+  React.render(<Modal header="prueba"/>, document.getElementById('div-modal'));
 };
