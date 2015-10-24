@@ -8,7 +8,7 @@ var express = require('express'),
 	app = express(),
 	swig = require('swig'),
 	passport =  require('passport'),
-	urls = require('./app/routes'),
+	urls = require('./app/urls'),
 	Persona = require('./app/models/person'),
 	expressSession = require('express-session');
 
